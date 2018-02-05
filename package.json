@@ -1,0 +1,55 @@
+{
+  "name": "lemon-ade",
+  "version": "0.1.0",
+  "description": "Composable AJAX requests that return a Future data type.",
+  "main": "lib/bundle.umd.js",
+  "module": "lib/bundle.esm.js",
+  "repository": "https://github.com/wking-io/lemonade",
+  "author": "Will King <contact@wking.io> (https://www.wking.io/)",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "1.6.1",
+    "babel-tape-runner": "2.0.1",
+    "eslint": "4.16.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-import": "2.8.0",
+    "husky": "0.14.3",
+    "jsdom": "11.6.2",
+    "lint-staged": "6.1.0",
+    "prettier": "1.10.2",
+    "prettier-eslint-cli": "4.7.0",
+    "rollup": "^0.55.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^8.3.0",
+    "rollup-plugin-includepaths": "^0.2.2",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "^3.0.2",
+    "rollup-plugin-uglify": "3.0.0",
+    "tap-spec": "4.1.1",
+    "tape": "4.8.0"
+  },
+  "dependencies": {
+    "fluture": "8.0.1",
+    "ramda": "0.25.0"
+  },
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "build:dist": "rollup -c rollup.dist.config.js",
+    "eslint": "eslint 'src/**/*.js'",
+    "format":
+      "prettier-eslint --trailing-comma es5 --single-quote --write 'src/*/*.js'",
+    "precommit": "lint-staged",
+    "prepublishOnly":
+      "rollup -c && babel-tape-runner __tests__/*.test.js | tap-spec",
+    "test": "babel-tape-runner src/__tests__/*.test.js | tap-spec",
+    "test:bundle": "babel-tape-runner __tests__/*.test.js | tap-spec"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier-eslint --trailing-comma es5 --single-quote --write",
+      "git add"
+    ]
+  }
+}
