@@ -62,6 +62,6 @@ setHtmlWithPostBody('.default').fork(console.error, console.log);
 ### Global Bundle (CDN)
 
 Lemonade is hosted in full with all of its dependencies at:
-[https://rawgit.com/wking-io/lemonade/master/lib/bundle.js](https://rawgit.com/wking-io/lemonade/master/lib/bundle.js)
+[https://cdn.rawgit.com/wking-io/lemonade/14005c66/lib/bundle.js](https://cdn.rawgit.com/wking-io/lemonade/14005c66/lib/bundle.js)
 
 This script will add `lemonade` to the global scope.
