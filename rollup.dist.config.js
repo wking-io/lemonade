@@ -18,7 +18,7 @@ const babelrc = {
 };
 
 const banner = `/**
- * salad-bar bundled; version ${pkg.version}
+ * @wking_io/lemonade bundled; version ${pkg.version}
  */
 `;
 
@@ -36,9 +36,6 @@ export default {
     }),
     commonjs({
       include: 'node_modules/**',
-      namedExports: {
-        'node_modules/fluture/index.js': ['isFuture', 'of', 'reject'],
-      },
     }),
     babel({
       babelrc: false,

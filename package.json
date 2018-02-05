@@ -1,5 +1,5 @@
 {
-  "name": "lemon-ade",
+  "name": "@wking_io/lemonade",
   "version": "0.1.0",
   "description": "Composable AJAX requests that return a Future data type.",
   "main": "lib/bundle.umd.js",

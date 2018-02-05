@@ -4,7 +4,7 @@ Composable AJAX requests that return a Future data type.
 
 ## Usage
 
-> `npm install --save lemon-ade`
+> `npm install --save @wking_io/lemonade`
 
 Lemonade is bundled to work with EcmaScript version 5.
 
@@ -18,21 +18,25 @@ function: [`Object.assign`][js:object.assign].
 <!-- eslint-disable padding-line-between-statements -->
 
 ```js
-var { __, compose } = require('ramda');
-var { getJson } = require('lemon-ade');
-var { dom, setProp, getProp } = require('saladbar');
+var { compose, lift } = require('ramda');
+var { getJson } = require('@wking_io/lemonade');
+var { dom, getProp, setProp } = require('saladbar');
 
 // Given you want to add an API response to this html
 // <p class="default"></p>
 
+// API Endpoint
 var endpoint = 'https://jsonplaceholder.typicode.com/posts/1';
-var postBody = compose(getProp('body'), getJson);
-var setHtmlWithPostBody = compose(
-  setProp('innerHTML', postBody(endpoint)),
-  dom
-);
 
-setHtmlWithPostBody('.default').fork(console.error, console.log);
+// Function to hit enpoint and return the body prop of the response
+var postBody = compose(getProp('body'), getJson);
+
+// Lifted function that will set the innerHTML of the passed in DOM Element with the API response
+var setHtmlWithPostBody = lift((data, el) => setProp('innerHTML', data, el));
+
+// Load the function and then fork it with the results
+setHtmlWithPostBody(postBody(endpoint), dom('.default'))
+.fork(console.error, console.log);
 //> DOM Element
 ```
 
@@ -41,21 +45,25 @@ setHtmlWithPostBody('.default').fork(console.error, console.log);
 The `package.json` sets a `module`-field for build-tools like [Rollup][].
 
 ```js
-import { __, compose } from 'ramda';
-import { getJson } from 'lemon-ade';
-import { dom, setProp, getProp } from 'saladbar';
+import { compose, lift } from 'ramda';
+import { getJson } from '@wking_io/lemonade';
+import { dom, getProp, setProp } from 'saladbar';
 
 // Given you want to add an API response to this html
 // <p class="default"></p>
 
+// API Endpoint
 const endpoint = 'https://jsonplaceholder.typicode.com/posts/1';
-const postBody = compose(getProp('body'), getJson);
-const setHtmlWithPostBody = compose(
-  setProp('innerHTML', postBody(endpoint)),
-  dom
-);
 
-setHtmlWithPostBody('.default').fork(console.error, console.log);
+// Function to hit enpoint and return the body prop of the response
+const postBody = compose(getProp('body'), getJson);
+
+// Lifted function that will set the innerHTML of the passed in DOM Element with the API response
+const setHtmlWithPostBody = lift((data, el) => setProp('innerHTML', data, el));
+
+// Load the function and then fork it with the results
+setHtmlWithPostBody(postBody(endpoint), dom('.default'))
+.fork(console.error, console.log);
 //> DOM Element
 ```
 
