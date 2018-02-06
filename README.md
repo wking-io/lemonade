@@ -2,6 +2,10 @@
 
 Composable AJAX requests that return a Future data type.
 
+> This package used to be this project: https://github.com/runlevel3/lemonade
+> However, that project has now been deprecated for this package name. Please visit the
+> github project if you still need the old project.
+
 ## Usage
 
 > `npm install --save @wking_io/lemonade`
