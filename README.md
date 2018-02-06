@@ -8,7 +8,7 @@ Composable AJAX requests that return a Future data type.
 
 ## Usage
 
-> `npm install --save @wking_io/lemonade`
+> `npm install --save lemonade`
 
 Lemonade is bundled to work with EcmaScript version 5.
 
@@ -23,7 +23,7 @@ function: [`Object.assign`][js:object.assign].
 
 ```js
 var { compose, lift } = require('ramda');
-var { getJson } = require('@wking_io/lemonade');
+var { getJson } = require('lemonade');
 var { dom, getProp, setProp } = require('saladbar');
 
 // Given you want to add an API response to this html
@@ -50,7 +50,7 @@ The `package.json` sets a `module`-field for build-tools like [Rollup][].
 
 ```js
 import { compose, lift } from 'ramda';
-import { getJson } from '@wking_io/lemonade';
+import { getJson } from 'lemonade';
 import { dom, getProp, setProp } from 'saladbar';
 
 // Given you want to add an API response to this html
