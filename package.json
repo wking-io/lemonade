@@ -1,6 +1,6 @@
 {
   "name": "lemonade",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Composable AJAX requests that return a Future data type.",
   "main": "lib/bundle.umd.js",
   "module": "lib/bundle.esm.js",
