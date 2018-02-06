@@ -8,7 +8,8 @@ Composable AJAX requests that return a Future data type.
 
 ## Usage
 
-> `npm install --save lemonade`
+> `yarn install lemonade`
+> `npm install lemonade`
 
 Lemonade is bundled to work with EcmaScript version 5.
 
