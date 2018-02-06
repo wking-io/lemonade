@@ -13,7 +13,7 @@ Composable AJAX requests that return a Future data type.
 Lemonade is bundled to work with EcmaScript version 5.
 
 For older environments you may need to polyfill the following
-function: [`Object.assign`][js:object.assign].
+function: [`Object.assign`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
 
 ### CommonJS Module
 
@@ -46,7 +46,7 @@ setHtmlWithPostBody(postBody(endpoint), dom('.default'))
 
 ### EcmaScript Module
 
-The `package.json` sets a `module`-field for build-tools like [Rollup][].
+The `package.json` sets a `module`-field for build-tools like [Rollup](https://rollupjs.org/guide/en).
 
 ```js
 import { compose, lift } from 'ramda';
