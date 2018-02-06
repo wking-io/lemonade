@@ -2,6 +2,10 @@ src/
 .eslintrc
 .eslintignore
 .babelrc
+.prettierignore
 rollup.config.js
 lib/bundle.js
 __tests__/
+rollup.dist.config.js
+yarn.lock
+yarn-error.log
