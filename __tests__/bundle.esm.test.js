@@ -5,7 +5,6 @@ import * as lemonade from '../lib/bundle.esm';
 const isFunction = func => typeof func === 'function';
 
 test('All exported functions are available and exist.', assert => {
-  console.log(Object.values(lemonade));
   const result = Object.values(lemonade).every(isFunction);
   const expected = true;
   assert.equal(result, expected);
