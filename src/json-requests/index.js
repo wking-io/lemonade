@@ -1,5 +1,4 @@
-import { __ } from 'ramda';
 import makeJsonRequest from './_jsonRequests';
 
-export const getJson = makeJsonRequest('GET', __, false);
-export const postJson = makeJsonRequest('POST');
+export const getJson = x => makeJsonRequest('GET', x, false);
+export const postJson = (x, y) => makeJsonRequest('POST', x, y);

@@ -1,20 +1,11 @@
 /* eslint sort-keys: 0 */
 import babel from 'rollup-plugin-babel';
 import includePaths from 'rollup-plugin-includepaths';
-import uglify from 'rollup-plugin-uglify';
+import { uglify } from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
-const babelrc = {
-  presets: [
-    [
-      'env',
-      {
-        modules: false,
-      },
-    ],
-  ],
-  plugins: ['external-helpers'],
-};
+const presets = [['@babel/env']];
 
 export default [
   {
@@ -31,9 +22,11 @@ export default [
         paths: ['src'],
       }),
       babel({
-        babelrc: false,
+        externalHelpers: true,
+        plugins: ['@babel/external-helpers'],
         exclude: 'node_modules/**',
-        presets: babelrc,
+        babelrc: false,
+        presets,
       }),
       uglify(),
     ],
@@ -50,11 +43,13 @@ export default [
         paths: ['src'],
       }),
       babel({
-        babelrc: false,
+        externalHelpers: true,
+        plugins: ['@babel/external-helpers'],
         exclude: 'node_modules/**',
-        presets: babelrc,
+        babelrc: false,
+        presets,
       }),
-      uglify(),
+      terser(),
     ],
   },
 ];
