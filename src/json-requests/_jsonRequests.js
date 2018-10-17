@@ -1,9 +1,8 @@
-import { curry } from 'ramda';
-import Future from 'fluture';
+import Future from 'data.task';
 import handleResponse from './_handleResponse';
 
-const makeJsonRequest = curry((method, url, data) =>
-  Future((reject, resolve) => {
+const makeJsonRequest = (method, url, data) =>
+  new Future((reject, resolve) => {
     const xhr = new XMLHttpRequest();
 
     if (!xhr) {
@@ -21,7 +20,6 @@ const makeJsonRequest = curry((method, url, data) =>
     } else {
       xhr.send();
     }
-  })
-);
+  });
 
 export default makeJsonRequest;

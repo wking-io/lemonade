@@ -1,4 +1,4 @@
-import Future from 'fluture';
+import Future from 'data.task';
 import test from 'tape';
 import handleResponse from '../json-requests/_handleResponse';
 
@@ -8,7 +8,7 @@ test('handleResponse returns JSON when response is successful', assert => {
     response: { data: true },
     status: 200,
   };
-  const actual = Future((reject, resolve) =>
+  const actual = new Future((reject, resolve) =>
     handleResponse(fakeResponse, reject, resolve)()
   );
   const expected = true;
@@ -24,7 +24,7 @@ test('handleResponse returns error when response is unsuccessful', assert => {
     readyState: 4,
     status: 400,
   };
-  const actual = Future((reject, resolve) =>
+  const actual = new Future((reject, resolve) =>
     handleResponse(fakeResponse, reject, resolve)()
   );
   const expected = true;

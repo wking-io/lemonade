@@ -2,20 +2,10 @@
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import node from 'rollup-plugin-node-resolve';
-import uglify from 'rollup-plugin-uglify';
+import { uglify } from 'rollup-plugin-uglify';
 import pkg from './package.json';
 
-const babelrc = {
-  presets: [
-    [
-      'env',
-      {
-        modules: false,
-      },
-    ],
-  ],
-  plugins: ['external-helpers'],
-};
+const presets = [['@babel/env']];
 
 const banner = `/**
  * @wking_io/lemonade bundled; version ${pkg.version}
@@ -38,9 +28,11 @@ export default {
       include: 'node_modules/**',
     }),
     babel({
-      babelrc: false,
+      externalHelpers: true,
+      plugins: ['@babel/external-helpers'],
       exclude: 'node_modules/**',
-      presets: babelrc,
+      babelrc: false,
+      presets,
     }),
     uglify(),
   ],
